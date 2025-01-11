@@ -1,6 +1,5 @@
 require('dotenv').config()
 
-const fs = require('fs').promises
 const path = require('path')
 const cal = require('@googleapis/calendar')
 
@@ -12,7 +11,6 @@ const cal = require('@googleapis/calendar')
   const auth = new cal.auth.GoogleAuth({
     keyFile,
     scopes,
-    // auth: process.env.GOOGLE_API_KEY
   })
   
   const authClient = await auth.getClient()
