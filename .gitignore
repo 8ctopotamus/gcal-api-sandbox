@@ -2,6 +2,7 @@
 node_modules
 
 # desktop oathcreds downloaded from GCP when creating Oauth client credentials - use web instead for actual projects
-credentials.json
+google-service-account-credentials.json
+
 # created by google localauth package 
 token.json
