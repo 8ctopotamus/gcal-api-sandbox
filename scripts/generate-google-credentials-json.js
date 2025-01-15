@@ -5,7 +5,8 @@ import fs from 'fs'
 import path from 'path'
 const __dirname = import.meta.dirname
 
-const outPath = path.join(__dirname, '..')
+const outFilename = 'google-service-account-credentials.json'
+const outPath = path.join(__dirname, '..', outFilename)
 
 const creds = {
   type: 'service_account',
@@ -21,4 +22,5 @@ const creds = {
   universe_domain: "googleapis.com"
 }
 
-fs.writeFileSync(`${outPath}/google-service-account-credentials.json`, JSON.stringify(creds, null, 2))
+fs.writeFileSync(outPath, JSON.stringify(creds, null, 2))
+console.log(`${outFilename} written to ${outPath}`)

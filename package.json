@@ -5,6 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "npm run generate-google-credentials-json && node index.js",
+    "generate-google-credentials-json": "node scripts/generate-google-credentials-json.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
