@@ -1,7 +1,9 @@
-require('dotenv').config()
+import dotenv from 'dotenv'
+dotenv.config()
 
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
+const __dirname = import.meta.dirname
 
 const outPath = path.join(__dirname, '..')
 

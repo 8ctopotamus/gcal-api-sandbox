@@ -37,15 +37,15 @@ const insertEvent = async event => await client.events.insert({
 })
 
 const event = {
-  'summary': 'Test Event',
+  'summary': 'Test Event via API',
   'location': '800 Howard St., San Francisco, CA 94103',
   'description': 'A test event',
   'start': {
-    'dateTime': '2025-01-13T09:00:00-07:00',
+    'dateTime': '2025-01-17T09:00:00-07:00',
     'timeZone': 'America/Chicago',
   },
   'end': {
-    'dateTime': '2025-01-13T11:00:00-07:00',
+    'dateTime': '2025-01-17T11:00:00-07:00',
     'timeZone': 'America/Chicago',
   },
   'attendees': [
@@ -56,7 +56,7 @@ const event = {
   },
 };
 
-insertEvent(event)
+// insertEvent(event)
 
 
 const events = await listEvents()  
