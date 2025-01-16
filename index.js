@@ -1,25 +1,21 @@
 import * as dotenv from 'dotenv'
 dotenv.config()
 
-import path from 'path'
 import cal from '@googleapis/calendar'
+import creds from './google-service-account-credentials.json' assert { type: 'json' }
 
-const __dirname = import.meta.dirname
 const calendarId = process.env.GOOGLE_CALENDAR_ID
-
-const keyFileName = 'google-service-account-credentials.json'
-const keyFile = path.join(__dirname, keyFileName)
 const scopes = ['https://www.googleapis.com/auth/calendar.events']
 
-const auth = new cal.auth.GoogleAuth({
-  keyFile,
+const auth = new cal.auth.JWT({
+  email: creds.client_email,
+  key: creds.private_key,
   scopes,
+  subject: 'john@codeofthenorth.com'
 })
 
-const authClient = await auth.getClient()
-
 const client = await cal.calendar({
-  auth: authClient,
+  auth,
   version: 'v3'
 })
 
@@ -57,7 +53,6 @@ const event = {
 };
 
 // insertEvent(event)
-
 
 const events = await listEvents()  
 console.log(events.data.items)
