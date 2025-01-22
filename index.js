@@ -33,22 +33,43 @@ const insertEvent = async event => await client.events.insert({
 })
 
 const event = {
-  'summary': 'Test Event via API',
-  'location': '800 Howard St., San Francisco, CA 94103',
-  'description': 'A test event',
-  'start': {
-    'dateTime': '2025-01-17T09:00:00-07:00',
-    'timeZone': 'America/Chicago',
+  summary: 'Test Event via API',
+  location: '800 Howard St., San Francisco, CA 94103',
+  description: 'A test event',
+  start: {
+    dateTime: '2025-01-17T09:00:00-07:00',
+    timeZone: 'America/Chicago',
   },
-  'end': {
-    'dateTime': '2025-01-17T11:00:00-07:00',
-    'timeZone': 'America/Chicago',
+  end: {
+    dateTime: '2025-01-17T11:00:00-07:00',
+    timeZone: 'America/Chicago',
   },
-  'attendees': [
-    {'email': 'zylo.codes@gmail.com'},
+  attendees: [
+    { email: 'zylo.codes@gmail.com' },
   ],
-  'reminders': {
-    'useDefault': true,
+  reminders: {
+    useDefault: true,
+  },
+  conferenceData: {
+    createRequest: {
+      requestId: Math.random(), 
+      conferenceSolutionKey: {
+          type: 'hangoutsMeet'
+      }
+    },
+  },
+  reminders: {
+    useDefault: false,
+    overrides: [
+      {
+        method: "email",
+        minutes: 15
+      },
+      {
+        method: "popup",
+        minutes: 15
+      }
+    ]
   },
 };
 
