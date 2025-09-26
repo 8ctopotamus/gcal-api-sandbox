@@ -5,7 +5,7 @@ import cal from '@googleapis/calendar'
 import creds from './google-service-account-credentials.json' assert { type: 'json' }
 
 const calendarId = process.env.GOOGLE_CALENDAR_ID
-const scopes = ['https://www.googleapis.com/auth/calendar']
+const scopes = ['https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/calendar.events']
 
 const auth = new cal.auth.JWT({
   email: creds.client_email,
@@ -23,7 +23,7 @@ const client = await cal.calendar({
 
 const listEvents = async () => await client.events.list({
   calendarId,
-  timeMin: new Date().toISOString(),
+  // timeMin: new Date().toISOString(),
   maxResults: 10,
   singleEvents: true,
   orderBy: 'startTime',
@@ -39,7 +39,7 @@ const insertEvent = async event => await client.events.insert({
 //   location: '800 Howard St., San Francisco, CA 94103',
 //   description: 'A test event',
 //   start: {
-//     dateTime: '2025-010-17T09:00:00-07:00',
+//     dateTime: '2025-10-17T09:00:00-07:00',
 //     timeZone: 'America/Chicago',
 //   },
 //   end: {
@@ -75,7 +75,7 @@ const insertEvent = async event => await client.events.insert({
 //   },
 // };
 
-// insertEvent(event)
+// await insertEvent(event)
 
 const events = await listEvents()  
 console.log(events.data.items)
